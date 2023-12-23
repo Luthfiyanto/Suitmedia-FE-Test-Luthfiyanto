@@ -1,11 +1,13 @@
-export default function Card() {
+import gambar from "../assets/img/banner.jpg";
+
+export default function Card({ slug, image, date }) {
   return (
     <>
-      <div className="card">
-        <img src="" alt="" />
-        <div>
-          <p className="font-medium text-myGrey-200">2 September 2004</p>
-          <h3 className="font-semibold text-myGrey-600">This is judul</h3>
+      <div className="card shadow-md rounded-md">
+        <img src={gambar} alt={image} className="rounded-t-md" />
+        <div className="p-3">
+          <p className="font-medium text-myGrey-200">{date}</p>
+          <h3 className="font-semibold text-myGrey-600">{slug}</h3>
         </div>
       </div>
     </>

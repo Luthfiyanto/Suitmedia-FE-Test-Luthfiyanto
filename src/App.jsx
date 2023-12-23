@@ -1,7 +1,8 @@
 import Navbar from "./Navbar";
 import Banner from "./Banner";
 import Filter from "./Filter";
-// import './App.css'
+import ListPost from "./ListPost";
+import Pagination from "./Pagination";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
       </header>
       <main className="mx-24 my-20">
         <Filter />
+        <ListPost />
+        <Pagination />
       </main>
     </>
   );
