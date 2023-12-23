@@ -12,7 +12,7 @@ export default {
       },
       myGrey: {
         600: "#595959",
-        200: "#F2F2F2",
+        200: "#B6BBC4",
       },
       white: "#ffffff",
     },

@@ -35,7 +35,7 @@ export default function Body() {
     <>
       <Filter setShowPerPage={setShowPerPage} setSort={setSort} submitHandle={onSubmit} />
       <ListPost />
-      <Pagination />
+      <Pagination handleUrl={setUrl} handleSubmit={onSubmitPagination} />
     </>
   );
 }

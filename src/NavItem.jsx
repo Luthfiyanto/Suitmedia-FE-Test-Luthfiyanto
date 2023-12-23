@@ -1,7 +1,7 @@
-export default function NavItem({ text }) {
+export default function NavItem({ text, active }) {
   return (
     <>
-      <a className=" text-white p-2 border-b-4 border-transparent hover:border-b-white transition-all">{text}</a>
+      <a className={active ? "nav-item-active" : "nav-item"}>{text}</a>
     </>
   );
 }

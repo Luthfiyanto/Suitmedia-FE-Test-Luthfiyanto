@@ -6,9 +6,9 @@ export default function ListPost() {
   const { post } = useContext(FilterContext);
 
   return (
-    <section className="grid grid-cols-4 my-10 gap-5">
+    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-10 gap-5">
       {post.map((data) => (
-        <Card key={data.id} image={data.image} slug={data.title} date={data.date} />
+        <Card key={data.id} image={data.medium_image} slug={data.title} date={data.published_at} />
       ))}
     </section>
   );

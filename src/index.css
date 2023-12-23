@@ -11,6 +11,13 @@
     @apply w-10 h-10 text-myGrey-600 border border-transparent hover:border-myGrey-600 p-2 rounded-md;
   }
 
+  .nav-item {
+    @apply text-white p-2 border-b-4 border-transparent hover:border-b-myGrey-200 transition-all;
+  }
+  .nav-item-active {
+    @apply text-white p-2 border-b-4 border-transparent border-b-white transition-all;
+  }
+
   .card {
     display: -webkit-box;
     -webkit-box-orient: vertical;

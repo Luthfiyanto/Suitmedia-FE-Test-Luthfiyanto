@@ -3,7 +3,13 @@ import NavItem from "./NavItem";
 import logo from "./assets/img/suitmedia-white.svg";
 
 export default function Navbar() {
-  const item = ["Work", "About", "Services", "Ideas", "Careers"];
+  const item = [
+    { title: "Work", active: false },
+    { title: "About", active: false },
+    { title: "Services", active: false },
+    { title: "Ideas", active: true },
+    { title: "Careers", active: false },
+  ];
 
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
@@ -28,7 +34,7 @@ export default function Navbar() {
         <img src={logo} alt="suitmedia logo" width={120} className="p-3" />
         <div className="flex items-center gap-3">
           {item.map((it) => (
-            <NavItem text={it} key={it} />
+            <NavItem text={it.title} active={it.active} key={it} />
           ))}
         </div>
       </nav>
