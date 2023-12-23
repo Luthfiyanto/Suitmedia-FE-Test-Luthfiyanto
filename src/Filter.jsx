@@ -1,14 +1,24 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { FilterContext } from "./context/FilterContext";
 
-export default function Filter() {
-  const [showPerPage, setShowPerPage] = useState(10);
-  const [sort, setSort] = useState("Newest");
+export default function Filter({ setShowPerPage, setSort, submitHandle }) {
+  const { meta } = useContext(FilterContext);
   return (
     <section className="font-medium text-sm text-myGrey-600 flex justify-between">
-      <p>Showing 1 - 10 from 100</p>
+      <p>
+        Showing {meta.from} - {meta.per_page} from {meta.total}
+      </p>
       <div className="flex gap-2">
         <label htmlFor="">Show per page:</label>
-        <select name="" id="" onChange={(e) => setShowPerPage(e.target.value)} className="dropdown">
+        <select
+          name=""
+          id=""
+          onChange={(e) => {
+            setShowPerPage(e.target.value);
+            submitHandle();
+          }}
+          className="dropdown"
+        >
           {[10, 20, 50].map((item) => (
             <option key={item} value={item}>
               {item}
@@ -17,7 +27,15 @@ export default function Filter() {
         </select>
 
         <label htmlFor="">Sort by</label>
-        <select name="" id="" onChange={(e) => setSort(e.target.value)} className="dropdown">
+        <select
+          name=""
+          id=""
+          onChange={(e) => {
+            setSort(e.target.value);
+            submitHandle();
+          }}
+          className="dropdown"
+        >
           {["Newest", "Oldest"].map((sort) => (
             <option key={sort} value={sort}>
               {sort}

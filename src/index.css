@@ -10,4 +10,19 @@
   .pagiButton {
     @apply w-10 h-10 text-myGrey-600 border border-transparent hover:border-myGrey-600 p-2 rounded-md;
   }
+
+  .card {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+  }
+
+  .card-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    margin: 0;
+  }
 }
