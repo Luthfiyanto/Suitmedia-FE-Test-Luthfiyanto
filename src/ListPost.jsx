@@ -7,8 +7,8 @@ export default function ListPost() {
 
   return (
     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-10 gap-5">
-      {post.map((data) => (
-        <Card key={data.id} image={data.medium_image} slug={data.title} date={data.published_at} />
+      {post.map((data, index) => (
+        <Card key={index} image={data.small_image} slug={data.title} date={data.published_at} />
       ))}
     </section>
   );

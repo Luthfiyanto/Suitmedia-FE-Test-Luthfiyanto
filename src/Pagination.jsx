@@ -1,14 +1,16 @@
 import { useContext } from "react";
 import { FilterContext } from "./context/FilterContext";
 
-export default function Pagination({ handleUrl, handleSubmit }) {
-  const { link, meta } = useContext(FilterContext);
+export default function Pagination() {
+  const { link, meta, url, setUrl, fetchData } = useContext(FilterContext);
+
   return (
     <div className="flex justify-center items-center">
       <button
         onClick={() => {
-          handleUrl(link.first);
-          handleSubmit();
+          setUrl(link.first);
+          console.log(url);
+          fetchData();
         }}
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="pagiButton">
@@ -17,21 +19,23 @@ export default function Pagination({ handleUrl, handleSubmit }) {
       </button>
       <button
         onClick={() => {
-          handleUrl(link.prev);
-          handleSubmit();
+          setUrl(link.prev);
+          console.log(url);
+          fetchData();
         }}
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="pagiButton">
           <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
         </svg>
       </button>
-      <button className="pagiButton">1</button>
+      <button className="pagiButton"></button>
       <button className="pagiButton">2</button>
       <button className="pagiButton">3</button>
       <button
         onClick={() => {
-          handleUrl(link.next);
-          handleSubmit();
+          setUrl(link.next);
+          console.log(url);
+          fetchData();
         }}
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="pagiButton">
@@ -40,8 +44,9 @@ export default function Pagination({ handleUrl, handleSubmit }) {
       </button>
       <button
         onClick={() => {
-          handleUrl(link.last);
-          handleSubmit();
+          setUrl(link.last);
+          console.log(url);
+          fetchData();
         }}
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="pagiButton">

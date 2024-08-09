@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { FilterContext } from "./context/FilterContext";
 
-export default function Filter({ setShowPerPage, setSort, submitHandle }) {
-  const { meta } = useContext(FilterContext);
+export default function Filter() {
+  const { meta, setShowPerPage, setSort } = useContext(FilterContext);
   return (
     <section className="font-medium text-sm text-myGrey-600 flex justify-between">
       <p>
-        Showing {meta.from} - {meta.per_page} from {meta.total}
+        Showing {meta.from} - {meta.to} from {meta.total}
       </p>
       <div className="flex gap-2">
         <label htmlFor="">Show per page:</label>
@@ -15,7 +15,6 @@ export default function Filter({ setShowPerPage, setSort, submitHandle }) {
           id=""
           onChange={(e) => {
             setShowPerPage(e.target.value);
-            submitHandle();
           }}
           className="dropdown"
         >
@@ -32,7 +31,6 @@ export default function Filter({ setShowPerPage, setSort, submitHandle }) {
           id=""
           onChange={(e) => {
             setSort(e.target.value);
-            submitHandle();
           }}
           className="dropdown"
         >

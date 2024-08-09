@@ -33,8 +33,8 @@ export default function Navbar() {
       <nav className="flex bg-myOrange-600 px-20 justify-between items-center p-2 fixed w-full z-20" style={{ top: visible ? "0" : "-100px", transition: "top 0.3s" }}>
         <img src={logo} alt="suitmedia logo" width={120} className="p-3" />
         <div className="flex items-center gap-3">
-          {item.map((it) => (
-            <NavItem text={it.title} active={it.active} key={it} />
+          {item.map((it, index) => (
+            <NavItem text={it.title} active={it.active} key={index} />
           ))}
         </div>
       </nav>
