@@ -17,8 +17,6 @@ const FilterContextProvider = (props) => {
   const fetchData = async () => {
     const sorting = sort == "Newest" ? "-published_at" : "published_at";
 
-    console.log("fetchData");
-
     try {
       if (url == "") {
         const res = await axios.get(`/api/ideas/?page[number]=${page}&page[size]=${showPerPage}&append[]=small_image&append[]=medium_image&sort=${sorting}`, {
@@ -26,7 +24,6 @@ const FilterContextProvider = (props) => {
             "Content-Type": "application/json",
           },
         });
-        console.log(res);
         const posts = res.data.data;
         const links = res.data.links;
         const metas = res.data.meta;
@@ -40,7 +37,6 @@ const FilterContextProvider = (props) => {
             "Content-Type": "application/json",
           },
         });
-        console.log(res);
         const posts = res.data.data;
         const links = res.data.links;
         const metas = res.data.meta;

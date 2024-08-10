@@ -18,11 +18,12 @@ export default function Pagination() {
   return (
     <div className="flex justify-center items-center">
       <button
+        disabled={current_page == 1}
         onClick={() => {
           setUrl(link.first);
         }}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="pagiButton">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`pagiButton ${current_page == 1 ? "text-opacity-50 hover:border-none" : ""}`}>
           <path strokeLinecap="round" strokeLinejoin="round" d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
         </svg>
       </button>
@@ -56,11 +57,12 @@ export default function Pagination() {
         </svg>
       </button>
       <button
+        disabled={current_page == last_page}
         onClick={() => {
           setUrl(link.last);
         }}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="pagiButton">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`pagiButton ${last_page == current_page ? "text-opacity-50 hover:border-none" : ""}`}>
           <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
         </svg>
       </button>
