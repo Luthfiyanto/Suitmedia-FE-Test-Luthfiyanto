@@ -5,12 +5,10 @@ import { useContext, useEffect } from "react";
 import { FilterContext } from "./context/FilterContext";
 
 export default function Body() {
-  const { sort, url, showPerPage, fetchData } = useContext(FilterContext);
-
+  const { page, sort, url, showPerPage, fetchData } = useContext(FilterContext);
   useEffect(() => {
     fetchData();
-    // }, []);
-  }, [sort, url, showPerPage]);
+  }, [page, sort, url, showPerPage]);
   return (
     <>
       <Filter />

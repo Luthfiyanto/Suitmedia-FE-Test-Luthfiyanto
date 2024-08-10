@@ -3,9 +3,9 @@ import { useState } from "react";
 import { createContext } from "react";
 
 export const FilterContext = createContext();
+export const apiUrl = "https://suitmedia-backend.suitdev.com/api/ideas";
 
 const FilterContextProvider = (props) => {
-  const apiUrl = "https://suitmedia-backend.suitdev.com/api/ideas";
   const [post, setPost] = useState([]);
   const [link, setLink] = useState({});
   const [meta, setMeta] = useState({});
@@ -25,46 +25,30 @@ const FilterContextProvider = (props) => {
       if (url == "") {
         const res = await axios.get(`${apiUrl}?page[number]=${page}&page[size]=${showPerPage}&append[]=small_image&append[]=medium_image&sort=${sorting}`);
         console.log(res);
-
         const posts = res.data.data;
         const links = res.data.links;
         const metas = res.data.meta;
         setPost(posts);
         setLink(links);
         setMeta(metas);
+        setPage(metas.current_page);
       } else {
         const res = await axios.get(url);
+        console.log(res);
         const posts = res.data.data;
         const links = res.data.links;
         const metas = res.data.meta;
         setPost(posts);
         setLink(links);
         setMeta(metas);
+        setPage(metas.current_page);
+        setShowPerPage(metas.per_page);
+        setUrl("");
       }
     } catch (error) {
       console.log(error);
     }
   };
-
-  // const submitPagination = async (payload) => {
-  //   const url = payload;
-  //   try {
-  //     setPost([]);
-  //     setLink({});
-  //     setMeta({});
-
-  //     const res = await axios.get(url);
-  //     const posts = res.data.data;
-  //     const links = res.data.links;
-  //     const metas = res.data.meta;
-
-  //     setPost(posts);
-  //     setLink(links);
-  //     setMeta(metas);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   return (
     <FilterContext.Provider
