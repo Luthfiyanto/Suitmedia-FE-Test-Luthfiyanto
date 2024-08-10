@@ -3,7 +3,6 @@ import { useState } from "react";
 import { createContext } from "react";
 
 export const FilterContext = createContext();
-export const apiUrl = "https://suitmedia-backend.suitdev.com/api/ideas";
 
 const FilterContextProvider = (props) => {
   const [post, setPost] = useState([]);
@@ -13,7 +12,6 @@ const FilterContextProvider = (props) => {
   const [showPerPage, setShowPerPage] = useState(10);
   const [sort, setSort] = useState("Newest");
   const [page, setPage] = useState("1");
-  const [isFilter, setIsFilter] = useState(false);
   const [url, setUrl] = useState("");
 
   const fetchData = async () => {
@@ -23,7 +21,11 @@ const FilterContextProvider = (props) => {
 
     try {
       if (url == "") {
-        const res = await axios.get(`${apiUrl}?page[number]=${page}&page[size]=${showPerPage}&append[]=small_image&append[]=medium_image&sort=${sorting}`);
+        const res = await axios.get(`/api/ideas/?page[number]=${page}&page[size]=${showPerPage}&append[]=small_image&append[]=medium_image&sort=${sorting}`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         console.log(res);
         const posts = res.data.data;
         const links = res.data.links;
@@ -33,7 +35,11 @@ const FilterContextProvider = (props) => {
         setMeta(metas);
         setPage(metas.current_page);
       } else {
-        const res = await axios.get(url);
+        const res = await axios.get(url, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         console.log(res);
         const posts = res.data.data;
         const links = res.data.links;
@@ -65,8 +71,6 @@ const FilterContextProvider = (props) => {
         setSort,
         page,
         setPage,
-        isFilter,
-        setIsFilter,
         url,
         setUrl,
         fetchData,

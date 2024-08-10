@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FilterContext, apiUrl } from "./context/FilterContext";
+import { FilterContext } from "./context/FilterContext";
 
 export default function Pagination() {
   const { link, meta, setUrl, sort, showPerPage } = useContext(FilterContext);
@@ -12,7 +12,7 @@ export default function Pagination() {
 
   const sorting = sort == "Newest" ? "-published_at" : "published_at";
   async function changePage(page) {
-    await setUrl(`${apiUrl}?page[number]=${page}&page[size]=${showPerPage}&append[]=small_image&append[]=medium_image&sort=${sorting}`);
+    await setUrl(`/api/ideas/?page[number]=${page}&page[size]=${showPerPage}&append[]=small_image&append[]=medium_image&sort=${sorting}`);
   }
 
   return (
