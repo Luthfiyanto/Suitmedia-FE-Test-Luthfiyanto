@@ -29,9 +29,8 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://localhost:3000",
-      "changeOrigin": true,
-      "rewrite": (path) => path.replace(/^\/api/, '')
+      "target": "https://suitmedia-backend.suitdev.com/api",
+      "changeOrigin": true
     }
   }
 }
